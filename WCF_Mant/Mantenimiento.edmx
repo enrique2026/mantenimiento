@@ -1,0 +1,1126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MANTENIMIENTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tb_Act_Man">
+          <Key>
+            <PropertyRef Name="idAct_Man" />
+          </Key>
+          <Property Name="idAct_Man" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Nombre_Man" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Estado_Man" Type="int" Nullable="false" />
+          <Property Name="Costo_Man" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Cliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="cod_ubigeo" Type="char" MaxLength="6" />
+          <Property Name="Nom_cli" Type="varchar" MaxLength="20" />
+          <Property Name="Ape_cli" Type="varchar" MaxLength="50" />
+          <Property Name="dir_cli" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ruc_Cli" Type="nvarchar" MaxLength="11" />
+          <Property Name="Telf_Cli" Type="varchar" MaxLength="9" />
+          <Property Name="Fec_Nac_Cli" Type="datetime" />
+          <Property Name="Correo_Cli" Type="nvarchar" MaxLength="30" />
+          <Property Name="Sexo" Type="char" MaxLength="1" />
+          <Property Name="Raz_soc_cli" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dni_Cli" Type="nvarchar" MaxLength="8" />
+          <Property Name="Registro_Cliente" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="varchar" MaxLength="20" />
+          <Property Name="Est_Cli" Type="int" />
+          <Property Name="TipoCliente" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_DetalleFactura">
+          <Key>
+            <PropertyRef Name="Num_Factura" />
+            <PropertyRef Name="idAct_Man" />
+          </Key>
+          <Property Name="Num_Factura" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="idAct_Man" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Factura">
+          <Key>
+            <PropertyRef Name="Num_Factura" />
+          </Key>
+          <Property Name="Num_Factura" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="fec_fac" Type="datetime" Nullable="false" />
+          <Property Name="Fec_can" Type="datetime" />
+          <Property Name="Est_fac" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ulti_Mod" Type="datetime" />
+          <Property Name="Usu_Ulti_Mod" Type="varchar" MaxLength="20" />
+          <Property Name="idMantenimiento" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="idCliente" Type="char" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Mant_Detalle">
+          <Key>
+            <PropertyRef Name="idMant_Detalle" />
+          </Key>
+          <Property Name="idMant_Detalle" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="tipo_mantenimiento" Type="int" Nullable="false" />
+          <Property Name="idMantenimiento" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="idAct_Man" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="id_Sist_Veh" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="id_Sub_Sist_Veh" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="idRep" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Mantenimiento">
+          <Key>
+            <PropertyRef Name="idMantenimiento" />
+          </Key>
+          <Property Name="idMantenimiento" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="idVehiculo" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="idMecanico" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Fec_Mant_Inic" Type="datetime" Nullable="false" />
+          <Property Name="Fec_Mant_Fin" Type="datetime" Nullable="false" />
+          <Property Name="Kilom_Veh_Ent" Type="int" Nullable="false" />
+          <Property Name="Kilom_Veh_Sali" Type="int" Nullable="false" />
+          <Property Name="Horom_Veh" Type="int" />
+          <Property Name="FotoAntes" Type="image" />
+          <Property Name="FotoDespues" Type="image" />
+        </EntityType>
+        <EntityType Name="Tb_Marca">
+          <Key>
+            <PropertyRef Name="idMarca" />
+          </Key>
+          <Property Name="idMarca" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DescripcionMarca" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Mecanico">
+          <Key>
+            <PropertyRef Name="idMecanico" />
+          </Key>
+          <Property Name="idMecanico" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="cod_ubigeo" Type="char" MaxLength="6" />
+          <Property Name="Nom_mec" Type="varchar" MaxLength="20" />
+          <Property Name="Ape_mec" Type="varchar" MaxLength="50" />
+          <Property Name="Doc_Iden" Type="varchar" MaxLength="10" />
+          <Property Name="dir_mecanico" Type="nvarchar" MaxLength="100" />
+          <Property Name="Fech_Ingreso" Type="date" />
+          <Property Name="Telf_Mec" Type="varchar" MaxLength="9" />
+          <Property Name="Fec_Nac" Type="date" />
+          <Property Name="Sexo" Type="char" MaxLength="1" />
+          <Property Name="Foto_Mec" Type="image" />
+          <Property Name="Espe_Mec" Type="varchar" MaxLength="30" />
+          <Property Name="Centro_Estudios" Type="nvarchar" MaxLength="30" />
+          <Property Name="Correo_Mec" Type="nvarchar" MaxLength="30" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="varchar" MaxLength="20" />
+          <Property Name="Est_Mec" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Repuesto">
+          <Key>
+            <PropertyRef Name="idRep" />
+          </Key>
+          <Property Name="idRep" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre_Rep" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Tipo_Rep" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Precio_Rep" Type="money" Nullable="false" />
+          <Property Name="Marca_Rep" Type="varchar" MaxLength="20" />
+          <Property Name="Cantidad_Rep" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Sist_Veh">
+          <Key>
+            <PropertyRef Name="idSist_Veh" />
+          </Key>
+          <Property Name="idSist_Veh" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="desc_Sist_Veh" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Sub_Sist_Veh">
+          <Key>
+            <PropertyRef Name="idSub_Sist_Veh" />
+          </Key>
+          <Property Name="idSub_Sist_Veh" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="desc_Sub_Sist_Veh" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Ubigeo">
+          <Key>
+            <PropertyRef Name="cod_ubigeo" />
+          </Key>
+          <Property Name="cod_ubigeo" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="IdDepa" Type="varchar" MaxLength="255" />
+          <Property Name="IdProv" Type="varchar" MaxLength="255" />
+          <Property Name="IdDist" Type="varchar" MaxLength="255" />
+          <Property Name="Departamento" Type="varchar" MaxLength="255" />
+          <Property Name="Provincia" Type="varchar" MaxLength="255" />
+          <Property Name="Distrito" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Tb_Usuario">
+          <Key>
+            <PropertyRef Name="Login_Usuario" />
+          </Key>
+          <Property Name="Login_Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pass_usuario" Type="varchar" MaxLength="20" />
+          <Property Name="Niv_usuario" Type="int" Nullable="false" />
+          <Property Name="Est_Usuario" Type="int" Nullable="false" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_registro" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tb_Vehiculo">
+          <Key>
+            <PropertyRef Name="idVehiculo" />
+          </Key>
+          <Property Name="idVehiculo" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="idCliente" Type="char" MaxLength="6" />
+          <Property Name="Act_kilom_Veh" Type="int" />
+          <Property Name="Act_Horom_Veh" Type="int" />
+          <Property Name="idMarca" Type="varchar" MaxLength="50" />
+          <Property Name="Tipo_Unidad" Type="int" />
+          <Property Name="Fec_Ing_Veh" Type="datetime" />
+          <Property Name="Color" Type="varchar" MaxLength="15" />
+          <Property Name="Tipo_Trans" Type="int" />
+          <Property Name="Comentario" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Foto_Veh" Type="image" />
+          <Property Name="Año_Modelo" Type="int" />
+          <Property Name="Modelo_Vehiculo" Type="varchar" MaxLength="30" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__Tb_Client__cod_u__286302EC">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="cod_ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Cliente">
+              <PropertyRef Name="cod_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Factur__idCli__5070F446">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="1" />
+          <End Role="Tb_Factura" Type="Self.Tb_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Tb_Factura">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Factur__idMan__4F7CD00D">
+          <End Role="Tb_Mantenimiento" Type="Self.Tb_Mantenimiento" Multiplicity="1" />
+          <End Role="Tb_Factura" Type="Self.Tb_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Mantenimiento">
+              <PropertyRef Name="idMantenimiento" />
+            </Principal>
+            <Dependent Role="Tb_Factura">
+              <PropertyRef Name="idMantenimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mant_D__id_Si__47DBAE45">
+          <End Role="Tb_Sist_Veh" Type="Self.Tb_Sist_Veh" Multiplicity="1" />
+          <End Role="Tb_Mant_Detalle" Type="Self.Tb_Mant_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Sist_Veh">
+              <PropertyRef Name="idSist_Veh" />
+            </Principal>
+            <Dependent Role="Tb_Mant_Detalle">
+              <PropertyRef Name="id_Sist_Veh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mant_D__id_Su__48CFD27E">
+          <End Role="Tb_Sub_Sist_Veh" Type="Self.Tb_Sub_Sist_Veh" Multiplicity="1" />
+          <End Role="Tb_Mant_Detalle" Type="Self.Tb_Mant_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Sub_Sist_Veh">
+              <PropertyRef Name="idSub_Sist_Veh" />
+            </Principal>
+            <Dependent Role="Tb_Mant_Detalle">
+              <PropertyRef Name="id_Sub_Sist_Veh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mant_D__idAct__46E78A0C">
+          <End Role="Tb_Act_Man" Type="Self.Tb_Act_Man" Multiplicity="1" />
+          <End Role="Tb_Mant_Detalle" Type="Self.Tb_Mant_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Act_Man">
+              <PropertyRef Name="idAct_Man" />
+            </Principal>
+            <Dependent Role="Tb_Mant_Detalle">
+              <PropertyRef Name="idAct_Man" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mant_D__idMan__45F365D3">
+          <End Role="Tb_Mantenimiento" Type="Self.Tb_Mantenimiento" Multiplicity="1" />
+          <End Role="Tb_Mant_Detalle" Type="Self.Tb_Mant_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Mantenimiento">
+              <PropertyRef Name="idMantenimiento" />
+            </Principal>
+            <Dependent Role="Tb_Mant_Detalle">
+              <PropertyRef Name="idMantenimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mant_D__idRep__49C3F6B7">
+          <End Role="Tb_Repuesto" Type="Self.Tb_Repuesto" Multiplicity="1" />
+          <End Role="Tb_Mant_Detalle" Type="Self.Tb_Mant_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Repuesto">
+              <PropertyRef Name="idRep" />
+            </Principal>
+            <Dependent Role="Tb_Mant_Detalle">
+              <PropertyRef Name="idRep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Manten__idMec__403A8C7D">
+          <End Role="Tb_Mecanico" Type="Self.Tb_Mecanico" Multiplicity="1" />
+          <End Role="Tb_Mantenimiento" Type="Self.Tb_Mantenimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Mecanico">
+              <PropertyRef Name="idMecanico" />
+            </Principal>
+            <Dependent Role="Tb_Mantenimiento">
+              <PropertyRef Name="idMecanico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Manten__idVeh__3F466844">
+          <End Role="Tb_Vehiculo" Type="Self.Tb_Vehiculo" Multiplicity="1" />
+          <End Role="Tb_Mantenimiento" Type="Self.Tb_Mantenimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Vehiculo">
+              <PropertyRef Name="idVehiculo" />
+            </Principal>
+            <Dependent Role="Tb_Mantenimiento">
+              <PropertyRef Name="idVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mecani__cod_u__3B75D760">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Mecanico" Type="Self.Tb_Mecanico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="cod_ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Mecanico">
+              <PropertyRef Name="cod_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Vehicu__idCli__2E1BDC42">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+          <End Role="Tb_Vehiculo" Type="Self.Tb_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Tb_Vehiculo">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Vehicu__idMar__2F10007B">
+          <End Role="Tb_Marca" Type="Self.Tb_Marca" Multiplicity="0..1" />
+          <End Role="Tb_Vehiculo" Type="Self.Tb_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="Tb_Vehiculo">
+              <PropertyRef Name="idMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_VehiculoFechas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idVehiculo" Type="varchar" Mode="In" />
+          <Parameter Name="vFec_Inicio" Type="datetime" Mode="In" />
+          <Parameter Name="vFec_Fin" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="MANTENIMIENTOModelStoreContainer">
+          <EntitySet Name="Tb_Act_Man" EntityType="Self.Tb_Act_Man" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_DetalleFactura" EntityType="Self.Tb_DetalleFactura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Factura" EntityType="Self.Tb_Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Mant_Detalle" EntityType="Self.Tb_Mant_Detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Mantenimiento" EntityType="Self.Tb_Mantenimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Marca" EntityType="Self.Tb_Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Mecanico" EntityType="Self.Tb_Mecanico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Repuesto" EntityType="Self.Tb_Repuesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Sist_Veh" EntityType="Self.Tb_Sist_Veh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Sub_Sist_Veh" EntityType="Self.Tb_Sub_Sist_Veh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Vehiculo" EntityType="Self.Tb_Vehiculo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Tb_Client__cod_u__286302EC" Association="Self.FK__Tb_Client__cod_u__286302EC">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Factur__idCli__5070F446" Association="Self.FK__Tb_Factur__idCli__5070F446">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Factura" EntitySet="Tb_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Factur__idMan__4F7CD00D" Association="Self.FK__Tb_Factur__idMan__4F7CD00D">
+            <End Role="Tb_Mantenimiento" EntitySet="Tb_Mantenimiento" />
+            <End Role="Tb_Factura" EntitySet="Tb_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mant_D__id_Si__47DBAE45" Association="Self.FK__Tb_Mant_D__id_Si__47DBAE45">
+            <End Role="Tb_Sist_Veh" EntitySet="Tb_Sist_Veh" />
+            <End Role="Tb_Mant_Detalle" EntitySet="Tb_Mant_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mant_D__id_Su__48CFD27E" Association="Self.FK__Tb_Mant_D__id_Su__48CFD27E">
+            <End Role="Tb_Sub_Sist_Veh" EntitySet="Tb_Sub_Sist_Veh" />
+            <End Role="Tb_Mant_Detalle" EntitySet="Tb_Mant_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mant_D__idAct__46E78A0C" Association="Self.FK__Tb_Mant_D__idAct__46E78A0C">
+            <End Role="Tb_Act_Man" EntitySet="Tb_Act_Man" />
+            <End Role="Tb_Mant_Detalle" EntitySet="Tb_Mant_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mant_D__idMan__45F365D3" Association="Self.FK__Tb_Mant_D__idMan__45F365D3">
+            <End Role="Tb_Mantenimiento" EntitySet="Tb_Mantenimiento" />
+            <End Role="Tb_Mant_Detalle" EntitySet="Tb_Mant_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mant_D__idRep__49C3F6B7" Association="Self.FK__Tb_Mant_D__idRep__49C3F6B7">
+            <End Role="Tb_Repuesto" EntitySet="Tb_Repuesto" />
+            <End Role="Tb_Mant_Detalle" EntitySet="Tb_Mant_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Manten__idMec__403A8C7D" Association="Self.FK__Tb_Manten__idMec__403A8C7D">
+            <End Role="Tb_Mecanico" EntitySet="Tb_Mecanico" />
+            <End Role="Tb_Mantenimiento" EntitySet="Tb_Mantenimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Manten__idVeh__3F466844" Association="Self.FK__Tb_Manten__idVeh__3F466844">
+            <End Role="Tb_Vehiculo" EntitySet="Tb_Vehiculo" />
+            <End Role="Tb_Mantenimiento" EntitySet="Tb_Mantenimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mecani__cod_u__3B75D760" Association="Self.FK__Tb_Mecani__cod_u__3B75D760">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Mecanico" EntitySet="Tb_Mecanico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Vehicu__idCli__2E1BDC42" Association="Self.FK__Tb_Vehicu__idCli__2E1BDC42">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Vehiculo" EntitySet="Tb_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Vehicu__idMar__2F10007B" Association="Self.FK__Tb_Vehicu__idMar__2F10007B">
+            <End Role="Tb_Marca" EntitySet="Tb_Marca" />
+            <End Role="Tb_Vehiculo" EntitySet="Tb_Vehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MANTENIMIENTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tb_Act_Man">
+          <Key>
+            <PropertyRef Name="idAct_Man" />
+          </Key>
+          <Property Name="idAct_Man" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_Man" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado_Man" Type="Int32" Nullable="false" />
+          <Property Name="Costo_Man" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Tb_Mant_Detalle" Relationship="Self.FK__Tb_Mant_D__idAct__46E78A0C" FromRole="Tb_Act_Man" ToRole="Tb_Mant_Detalle" />
+        </EntityType>
+        <EntityType Name="Tb_Cliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cod_ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Nom_cli" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Ape_cli" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dir_cli" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ruc_Cli" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Telf_Cli" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Nac_Cli" Type="DateTime" Precision="3" />
+          <Property Name="Correo_Cli" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Raz_soc_cli" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dni_Cli" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Registro_Cliente" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Est_Cli" Type="Int32" />
+          <Property Name="TipoCliente" Type="Int32" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK__Tb_Client__cod_u__286302EC" FromRole="Tb_Cliente" ToRole="Tb_Ubigeo" />
+          <NavigationProperty Name="Tb_Factura" Relationship="Self.FK__Tb_Factur__idCli__5070F446" FromRole="Tb_Cliente" ToRole="Tb_Factura" />
+          <NavigationProperty Name="Tb_Vehiculo" Relationship="Self.FK__Tb_Vehicu__idCli__2E1BDC42" FromRole="Tb_Cliente" ToRole="Tb_Vehiculo" />
+        </EntityType>
+        <EntityType Name="Tb_DetalleFactura">
+          <Key>
+            <PropertyRef Name="Num_Factura" />
+            <PropertyRef Name="idAct_Man" />
+          </Key>
+          <Property Name="Num_Factura" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idAct_Man" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Factura">
+          <Key>
+            <PropertyRef Name="Num_Factura" />
+          </Key>
+          <Property Name="Num_Factura" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fec_fac" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fec_can" Type="DateTime" Precision="3" />
+          <Property Name="Est_fac" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ulti_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ulti_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="idMantenimiento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCliente" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK__Tb_Factur__idCli__5070F446" FromRole="Tb_Factura" ToRole="Tb_Cliente" />
+          <NavigationProperty Name="Tb_Mantenimiento" Relationship="Self.FK__Tb_Factur__idMan__4F7CD00D" FromRole="Tb_Factura" ToRole="Tb_Mantenimiento" />
+        </EntityType>
+        <EntityType Name="Tb_Mant_Detalle">
+          <Key>
+            <PropertyRef Name="idMant_Detalle" />
+          </Key>
+          <Property Name="idMant_Detalle" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_mantenimiento" Type="Int32" Nullable="false" />
+          <Property Name="idMantenimiento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idAct_Man" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Sist_Veh" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Sub_Sist_Veh" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idRep" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tb_Act_Man" Relationship="Self.FK__Tb_Mant_D__idAct__46E78A0C" FromRole="Tb_Mant_Detalle" ToRole="Tb_Act_Man" />
+          <NavigationProperty Name="Tb_Sist_Veh" Relationship="Self.FK__Tb_Mant_D__id_Si__47DBAE45" FromRole="Tb_Mant_Detalle" ToRole="Tb_Sist_Veh" />
+          <NavigationProperty Name="Tb_Sub_Sist_Veh" Relationship="Self.FK__Tb_Mant_D__id_Su__48CFD27E" FromRole="Tb_Mant_Detalle" ToRole="Tb_Sub_Sist_Veh" />
+          <NavigationProperty Name="Tb_Mantenimiento" Relationship="Self.FK__Tb_Mant_D__idMan__45F365D3" FromRole="Tb_Mant_Detalle" ToRole="Tb_Mantenimiento" />
+          <NavigationProperty Name="Tb_Repuesto" Relationship="Self.FK__Tb_Mant_D__idRep__49C3F6B7" FromRole="Tb_Mant_Detalle" ToRole="Tb_Repuesto" />
+        </EntityType>
+        <EntityType Name="Tb_Mantenimiento">
+          <Key>
+            <PropertyRef Name="idMantenimiento" />
+          </Key>
+          <Property Name="idMantenimiento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idVehiculo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idMecanico" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fec_Mant_Inic" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fec_Mant_Fin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Kilom_Veh_Ent" Type="Int32" Nullable="false" />
+          <Property Name="Kilom_Veh_Sali" Type="Int32" Nullable="false" />
+          <Property Name="Horom_Veh" Type="Int32" />
+          <Property Name="FotoAntes" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FotoDespues" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Tb_Factura" Relationship="Self.FK__Tb_Factur__idMan__4F7CD00D" FromRole="Tb_Mantenimiento" ToRole="Tb_Factura" />
+          <NavigationProperty Name="Tb_Mant_Detalle" Relationship="Self.FK__Tb_Mant_D__idMan__45F365D3" FromRole="Tb_Mantenimiento" ToRole="Tb_Mant_Detalle" />
+          <NavigationProperty Name="Tb_Mecanico" Relationship="Self.FK__Tb_Manten__idMec__403A8C7D" FromRole="Tb_Mantenimiento" ToRole="Tb_Mecanico" />
+          <NavigationProperty Name="Tb_Vehiculo" Relationship="Self.FK__Tb_Manten__idVeh__3F466844" FromRole="Tb_Mantenimiento" ToRole="Tb_Vehiculo" />
+        </EntityType>
+        <EntityType Name="Tb_Marca">
+          <Key>
+            <PropertyRef Name="idMarca" />
+          </Key>
+          <Property Name="idMarca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescripcionMarca" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tb_Vehiculo" Relationship="Self.FK__Tb_Vehicu__idMar__2F10007B" FromRole="Tb_Marca" ToRole="Tb_Vehiculo" />
+        </EntityType>
+        <EntityType Name="Tb_Mecanico">
+          <Key>
+            <PropertyRef Name="idMecanico" />
+          </Key>
+          <Property Name="idMecanico" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Nom_mec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Ape_mec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Doc_Iden" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="dir_mecanico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fech_Ingreso" Type="DateTime" Precision="0" />
+          <Property Name="Telf_Mec" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Nac" Type="DateTime" Precision="0" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Foto_Mec" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Espe_Mec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Centro_Estudios" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Correo_Mec" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Est_Mec" Type="Int32" />
+          <NavigationProperty Name="Tb_Mantenimiento" Relationship="Self.FK__Tb_Manten__idMec__403A8C7D" FromRole="Tb_Mecanico" ToRole="Tb_Mantenimiento" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK__Tb_Mecani__cod_u__3B75D760" FromRole="Tb_Mecanico" ToRole="Tb_Ubigeo" />
+        </EntityType>
+        <EntityType Name="Tb_Repuesto">
+          <Key>
+            <PropertyRef Name="idRep" />
+          </Key>
+          <Property Name="idRep" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_Rep" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo_Rep" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Precio_Rep" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Marca_Rep" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad_Rep" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Mant_Detalle" Relationship="Self.FK__Tb_Mant_D__idRep__49C3F6B7" FromRole="Tb_Repuesto" ToRole="Tb_Mant_Detalle" />
+        </EntityType>
+        <EntityType Name="Tb_Sist_Veh">
+          <Key>
+            <PropertyRef Name="idSist_Veh" />
+          </Key>
+          <Property Name="idSist_Veh" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="desc_Sist_Veh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tb_Mant_Detalle" Relationship="Self.FK__Tb_Mant_D__id_Si__47DBAE45" FromRole="Tb_Sist_Veh" ToRole="Tb_Mant_Detalle" />
+        </EntityType>
+        <EntityType Name="Tb_Sub_Sist_Veh">
+          <Key>
+            <PropertyRef Name="idSub_Sist_Veh" />
+          </Key>
+          <Property Name="idSub_Sist_Veh" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="desc_Sub_Sist_Veh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tb_Mant_Detalle" Relationship="Self.FK__Tb_Mant_D__id_Su__48CFD27E" FromRole="Tb_Sub_Sist_Veh" ToRole="Tb_Mant_Detalle" />
+        </EntityType>
+        <EntityType Name="Tb_Ubigeo">
+          <Key>
+            <PropertyRef Name="cod_ubigeo" />
+          </Key>
+          <Property Name="cod_ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IdDepa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IdProv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IdDist" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Distrito" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK__Tb_Client__cod_u__286302EC" FromRole="Tb_Ubigeo" ToRole="Tb_Cliente" />
+          <NavigationProperty Name="Tb_Mecanico" Relationship="Self.FK__Tb_Mecani__cod_u__3B75D760" FromRole="Tb_Ubigeo" ToRole="Tb_Mecanico" />
+        </EntityType>
+        <EntityType Name="Tb_Usuario">
+          <Key>
+            <PropertyRef Name="Login_Usuario" />
+          </Key>
+          <Property Name="Login_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Niv_usuario" Type="Int32" Nullable="false" />
+          <Property Name="Est_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tb_Vehiculo">
+          <Key>
+            <PropertyRef Name="idVehiculo" />
+          </Key>
+          <Property Name="idVehiculo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCliente" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Act_kilom_Veh" Type="Int32" />
+          <Property Name="Act_Horom_Veh" Type="Int32" />
+          <Property Name="idMarca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_Unidad" Type="Int32" />
+          <Property Name="Fec_Ing_Veh" Type="DateTime" Precision="3" />
+          <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_Trans" Type="Int32" />
+          <Property Name="Comentario" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Foto_Veh" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Año_Modelo" Type="Int32" />
+          <Property Name="Modelo_Vehiculo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK__Tb_Vehicu__idCli__2E1BDC42" FromRole="Tb_Vehiculo" ToRole="Tb_Cliente" />
+          <NavigationProperty Name="Tb_Mantenimiento" Relationship="Self.FK__Tb_Manten__idVeh__3F466844" FromRole="Tb_Vehiculo" ToRole="Tb_Mantenimiento" />
+          <NavigationProperty Name="Tb_Marca" Relationship="Self.FK__Tb_Vehicu__idMar__2F10007B" FromRole="Tb_Vehiculo" ToRole="Tb_Marca" />
+        </EntityType>
+        <Association Name="FK__Tb_Mant_D__idAct__46E78A0C">
+          <End Role="Tb_Act_Man" Type="Self.Tb_Act_Man" Multiplicity="1" />
+          <End Role="Tb_Mant_Detalle" Type="Self.Tb_Mant_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Act_Man">
+              <PropertyRef Name="idAct_Man" />
+            </Principal>
+            <Dependent Role="Tb_Mant_Detalle">
+              <PropertyRef Name="idAct_Man" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Client__cod_u__286302EC">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="cod_ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Cliente">
+              <PropertyRef Name="cod_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Factur__idCli__5070F446">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="1" />
+          <End Role="Tb_Factura" Type="Self.Tb_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Tb_Factura">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Vehicu__idCli__2E1BDC42">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+          <End Role="Tb_Vehiculo" Type="Self.Tb_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Tb_Vehiculo">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Factur__idMan__4F7CD00D">
+          <End Role="Tb_Mantenimiento" Type="Self.Tb_Mantenimiento" Multiplicity="1" />
+          <End Role="Tb_Factura" Type="Self.Tb_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Mantenimiento">
+              <PropertyRef Name="idMantenimiento" />
+            </Principal>
+            <Dependent Role="Tb_Factura">
+              <PropertyRef Name="idMantenimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mant_D__id_Si__47DBAE45">
+          <End Role="Tb_Sist_Veh" Type="Self.Tb_Sist_Veh" Multiplicity="1" />
+          <End Role="Tb_Mant_Detalle" Type="Self.Tb_Mant_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Sist_Veh">
+              <PropertyRef Name="idSist_Veh" />
+            </Principal>
+            <Dependent Role="Tb_Mant_Detalle">
+              <PropertyRef Name="id_Sist_Veh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mant_D__id_Su__48CFD27E">
+          <End Role="Tb_Sub_Sist_Veh" Type="Self.Tb_Sub_Sist_Veh" Multiplicity="1" />
+          <End Role="Tb_Mant_Detalle" Type="Self.Tb_Mant_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Sub_Sist_Veh">
+              <PropertyRef Name="idSub_Sist_Veh" />
+            </Principal>
+            <Dependent Role="Tb_Mant_Detalle">
+              <PropertyRef Name="id_Sub_Sist_Veh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mant_D__idMan__45F365D3">
+          <End Role="Tb_Mantenimiento" Type="Self.Tb_Mantenimiento" Multiplicity="1" />
+          <End Role="Tb_Mant_Detalle" Type="Self.Tb_Mant_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Mantenimiento">
+              <PropertyRef Name="idMantenimiento" />
+            </Principal>
+            <Dependent Role="Tb_Mant_Detalle">
+              <PropertyRef Name="idMantenimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mant_D__idRep__49C3F6B7">
+          <End Role="Tb_Repuesto" Type="Self.Tb_Repuesto" Multiplicity="1" />
+          <End Role="Tb_Mant_Detalle" Type="Self.Tb_Mant_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Repuesto">
+              <PropertyRef Name="idRep" />
+            </Principal>
+            <Dependent Role="Tb_Mant_Detalle">
+              <PropertyRef Name="idRep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Manten__idMec__403A8C7D">
+          <End Role="Tb_Mecanico" Type="Self.Tb_Mecanico" Multiplicity="1" />
+          <End Role="Tb_Mantenimiento" Type="Self.Tb_Mantenimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Mecanico">
+              <PropertyRef Name="idMecanico" />
+            </Principal>
+            <Dependent Role="Tb_Mantenimiento">
+              <PropertyRef Name="idMecanico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Manten__idVeh__3F466844">
+          <End Role="Tb_Vehiculo" Type="Self.Tb_Vehiculo" Multiplicity="1" />
+          <End Role="Tb_Mantenimiento" Type="Self.Tb_Mantenimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Vehiculo">
+              <PropertyRef Name="idVehiculo" />
+            </Principal>
+            <Dependent Role="Tb_Mantenimiento">
+              <PropertyRef Name="idVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Vehicu__idMar__2F10007B">
+          <End Role="Tb_Marca" Type="Self.Tb_Marca" Multiplicity="0..1" />
+          <End Role="Tb_Vehiculo" Type="Self.Tb_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="Tb_Vehiculo">
+              <PropertyRef Name="idMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Mecani__cod_u__3B75D760">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Mecanico" Type="Self.Tb_Mecanico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="cod_ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Mecanico">
+              <PropertyRef Name="cod_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MANTENIMIENTO" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tb_Act_Man" EntityType="Self.Tb_Act_Man" />
+          <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" />
+          <EntitySet Name="Tb_DetalleFactura" EntityType="Self.Tb_DetalleFactura" />
+          <EntitySet Name="Tb_Factura" EntityType="Self.Tb_Factura" />
+          <EntitySet Name="Tb_Mant_Detalle" EntityType="Self.Tb_Mant_Detalle" />
+          <EntitySet Name="Tb_Mantenimiento" EntityType="Self.Tb_Mantenimiento" />
+          <EntitySet Name="Tb_Marca" EntityType="Self.Tb_Marca" />
+          <EntitySet Name="Tb_Mecanico" EntityType="Self.Tb_Mecanico" />
+          <EntitySet Name="Tb_Repuesto" EntityType="Self.Tb_Repuesto" />
+          <EntitySet Name="Tb_Sist_Veh" EntityType="Self.Tb_Sist_Veh" />
+          <EntitySet Name="Tb_Sub_Sist_Veh" EntityType="Self.Tb_Sub_Sist_Veh" />
+          <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" />
+          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" />
+          <EntitySet Name="Tb_Vehiculo" EntityType="Self.Tb_Vehiculo" />
+          <AssociationSet Name="FK__Tb_Mant_D__idAct__46E78A0C" Association="Self.FK__Tb_Mant_D__idAct__46E78A0C">
+            <End Role="Tb_Act_Man" EntitySet="Tb_Act_Man" />
+            <End Role="Tb_Mant_Detalle" EntitySet="Tb_Mant_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Client__cod_u__286302EC" Association="Self.FK__Tb_Client__cod_u__286302EC">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Factur__idCli__5070F446" Association="Self.FK__Tb_Factur__idCli__5070F446">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Factura" EntitySet="Tb_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Vehicu__idCli__2E1BDC42" Association="Self.FK__Tb_Vehicu__idCli__2E1BDC42">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Vehiculo" EntitySet="Tb_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Factur__idMan__4F7CD00D" Association="Self.FK__Tb_Factur__idMan__4F7CD00D">
+            <End Role="Tb_Mantenimiento" EntitySet="Tb_Mantenimiento" />
+            <End Role="Tb_Factura" EntitySet="Tb_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mant_D__id_Si__47DBAE45" Association="Self.FK__Tb_Mant_D__id_Si__47DBAE45">
+            <End Role="Tb_Sist_Veh" EntitySet="Tb_Sist_Veh" />
+            <End Role="Tb_Mant_Detalle" EntitySet="Tb_Mant_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mant_D__id_Su__48CFD27E" Association="Self.FK__Tb_Mant_D__id_Su__48CFD27E">
+            <End Role="Tb_Sub_Sist_Veh" EntitySet="Tb_Sub_Sist_Veh" />
+            <End Role="Tb_Mant_Detalle" EntitySet="Tb_Mant_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mant_D__idMan__45F365D3" Association="Self.FK__Tb_Mant_D__idMan__45F365D3">
+            <End Role="Tb_Mantenimiento" EntitySet="Tb_Mantenimiento" />
+            <End Role="Tb_Mant_Detalle" EntitySet="Tb_Mant_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mant_D__idRep__49C3F6B7" Association="Self.FK__Tb_Mant_D__idRep__49C3F6B7">
+            <End Role="Tb_Repuesto" EntitySet="Tb_Repuesto" />
+            <End Role="Tb_Mant_Detalle" EntitySet="Tb_Mant_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Manten__idMec__403A8C7D" Association="Self.FK__Tb_Manten__idMec__403A8C7D">
+            <End Role="Tb_Mecanico" EntitySet="Tb_Mecanico" />
+            <End Role="Tb_Mantenimiento" EntitySet="Tb_Mantenimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Manten__idVeh__3F466844" Association="Self.FK__Tb_Manten__idVeh__3F466844">
+            <End Role="Tb_Vehiculo" EntitySet="Tb_Vehiculo" />
+            <End Role="Tb_Mantenimiento" EntitySet="Tb_Mantenimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Vehicu__idMar__2F10007B" Association="Self.FK__Tb_Vehicu__idMar__2F10007B">
+            <End Role="Tb_Marca" EntitySet="Tb_Marca" />
+            <End Role="Tb_Vehiculo" EntitySet="Tb_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Mecani__cod_u__3B75D760" Association="Self.FK__Tb_Mecani__cod_u__3B75D760">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Mecanico" EntitySet="Tb_Mecanico" />
+          </AssociationSet>
+          <FunctionImport Name="usp_VehiculoFechas" ReturnType="Collection(MANTENIMIENTOModel.usp_VehiculoFechas_Result)">
+            <Parameter Name="idVehiculo" Mode="In" Type="String" />
+            <Parameter Name="vFec_Inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="vFec_Fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="usp_VehiculoFechas_Result">
+          <Property Type="String" Name="idVehiculo" Nullable="false" MaxLength="7" />
+          <Property Type="DateTime" Name="Fec_Mant_Inic" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Fec_Mant_Fin" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="tipo_mantenimiento" Nullable="false" />
+          <Property Type="String" Name="TipoMantenimiento" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_mec" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Ape_mec" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="idMecanico" Nullable="false" MaxLength="4" />
+          <Property Type="Int32" Name="Tipo_Trans" Nullable="true" />
+          <Property Type="String" Name="TipoTransmision" Nullable="true" MaxLength="14" />
+          <Property Type="String" Name="idMarca" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Tipo_Unidad" Nullable="true" />
+          <Property Type="String" Name="TipoUnidad" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MANTENIMIENTOModelStoreContainer" CdmEntityContainer="MANTENIMIENTO">
+          <EntitySetMapping Name="Tb_Act_Man">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Act_Man">
+              <MappingFragment StoreEntitySet="Tb_Act_Man">
+                <ScalarProperty Name="idAct_Man" ColumnName="idAct_Man" />
+                <ScalarProperty Name="Nombre_Man" ColumnName="Nombre_Man" />
+                <ScalarProperty Name="Estado_Man" ColumnName="Estado_Man" />
+                <ScalarProperty Name="Costo_Man" ColumnName="Costo_Man" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Cliente">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Cliente">
+              <MappingFragment StoreEntitySet="Tb_Cliente">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="cod_ubigeo" ColumnName="cod_ubigeo" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+                <ScalarProperty Name="dir_cli" ColumnName="dir_cli" />
+                <ScalarProperty Name="Ruc_Cli" ColumnName="Ruc_Cli" />
+                <ScalarProperty Name="Telf_Cli" ColumnName="Telf_Cli" />
+                <ScalarProperty Name="Fec_Nac_Cli" ColumnName="Fec_Nac_Cli" />
+                <ScalarProperty Name="Correo_Cli" ColumnName="Correo_Cli" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Raz_soc_cli" ColumnName="Raz_soc_cli" />
+                <ScalarProperty Name="Dni_Cli" ColumnName="Dni_Cli" />
+                <ScalarProperty Name="Registro_Cliente" ColumnName="Registro_Cliente" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+                <ScalarProperty Name="Est_Cli" ColumnName="Est_Cli" />
+                <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_DetalleFactura">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_DetalleFactura">
+              <MappingFragment StoreEntitySet="Tb_DetalleFactura">
+                <ScalarProperty Name="Num_Factura" ColumnName="Num_Factura" />
+                <ScalarProperty Name="idAct_Man" ColumnName="idAct_Man" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Factura">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Factura">
+              <MappingFragment StoreEntitySet="Tb_Factura">
+                <ScalarProperty Name="Num_Factura" ColumnName="Num_Factura" />
+                <ScalarProperty Name="fec_fac" ColumnName="fec_fac" />
+                <ScalarProperty Name="Fec_can" ColumnName="Fec_can" />
+                <ScalarProperty Name="Est_fac" ColumnName="Est_fac" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_registro" ColumnName="Usu_registro" />
+                <ScalarProperty Name="Fec_Ulti_Mod" ColumnName="Fec_Ulti_Mod" />
+                <ScalarProperty Name="Usu_Ulti_Mod" ColumnName="Usu_Ulti_Mod" />
+                <ScalarProperty Name="idMantenimiento" ColumnName="idMantenimiento" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Mant_Detalle">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Mant_Detalle">
+              <MappingFragment StoreEntitySet="Tb_Mant_Detalle">
+                <ScalarProperty Name="idMant_Detalle" ColumnName="idMant_Detalle" />
+                <ScalarProperty Name="tipo_mantenimiento" ColumnName="tipo_mantenimiento" />
+                <ScalarProperty Name="idMantenimiento" ColumnName="idMantenimiento" />
+                <ScalarProperty Name="idAct_Man" ColumnName="idAct_Man" />
+                <ScalarProperty Name="id_Sist_Veh" ColumnName="id_Sist_Veh" />
+                <ScalarProperty Name="id_Sub_Sist_Veh" ColumnName="id_Sub_Sist_Veh" />
+                <ScalarProperty Name="idRep" ColumnName="idRep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Mantenimiento">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Mantenimiento">
+              <MappingFragment StoreEntitySet="Tb_Mantenimiento">
+                <ScalarProperty Name="idMantenimiento" ColumnName="idMantenimiento" />
+                <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+                <ScalarProperty Name="idMecanico" ColumnName="idMecanico" />
+                <ScalarProperty Name="Fec_Mant_Inic" ColumnName="Fec_Mant_Inic" />
+                <ScalarProperty Name="Fec_Mant_Fin" ColumnName="Fec_Mant_Fin" />
+                <ScalarProperty Name="Kilom_Veh_Ent" ColumnName="Kilom_Veh_Ent" />
+                <ScalarProperty Name="Kilom_Veh_Sali" ColumnName="Kilom_Veh_Sali" />
+                <ScalarProperty Name="Horom_Veh" ColumnName="Horom_Veh" />
+                <ScalarProperty Name="FotoAntes" ColumnName="FotoAntes" />
+                <ScalarProperty Name="FotoDespues" ColumnName="FotoDespues" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Marca">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Marca">
+              <MappingFragment StoreEntitySet="Tb_Marca">
+                <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+                <ScalarProperty Name="DescripcionMarca" ColumnName="DescripcionMarca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Mecanico">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Mecanico">
+              <MappingFragment StoreEntitySet="Tb_Mecanico">
+                <ScalarProperty Name="idMecanico" ColumnName="idMecanico" />
+                <ScalarProperty Name="cod_ubigeo" ColumnName="cod_ubigeo" />
+                <ScalarProperty Name="Nom_mec" ColumnName="Nom_mec" />
+                <ScalarProperty Name="Ape_mec" ColumnName="Ape_mec" />
+                <ScalarProperty Name="Doc_Iden" ColumnName="Doc_Iden" />
+                <ScalarProperty Name="dir_mecanico" ColumnName="dir_mecanico" />
+                <ScalarProperty Name="Fech_Ingreso" ColumnName="Fech_Ingreso" />
+                <ScalarProperty Name="Telf_Mec" ColumnName="Telf_Mec" />
+                <ScalarProperty Name="Fec_Nac" ColumnName="Fec_Nac" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Foto_Mec" ColumnName="Foto_Mec" />
+                <ScalarProperty Name="Espe_Mec" ColumnName="Espe_Mec" />
+                <ScalarProperty Name="Centro_Estudios" ColumnName="Centro_Estudios" />
+                <ScalarProperty Name="Correo_Mec" ColumnName="Correo_Mec" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+                <ScalarProperty Name="Est_Mec" ColumnName="Est_Mec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Repuesto">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Repuesto">
+              <MappingFragment StoreEntitySet="Tb_Repuesto">
+                <ScalarProperty Name="idRep" ColumnName="idRep" />
+                <ScalarProperty Name="Nombre_Rep" ColumnName="Nombre_Rep" />
+                <ScalarProperty Name="Tipo_Rep" ColumnName="Tipo_Rep" />
+                <ScalarProperty Name="Precio_Rep" ColumnName="Precio_Rep" />
+                <ScalarProperty Name="Marca_Rep" ColumnName="Marca_Rep" />
+                <ScalarProperty Name="Cantidad_Rep" ColumnName="Cantidad_Rep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Sist_Veh">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Sist_Veh">
+              <MappingFragment StoreEntitySet="Tb_Sist_Veh">
+                <ScalarProperty Name="idSist_Veh" ColumnName="idSist_Veh" />
+                <ScalarProperty Name="desc_Sist_Veh" ColumnName="desc_Sist_Veh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Sub_Sist_Veh">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Sub_Sist_Veh">
+              <MappingFragment StoreEntitySet="Tb_Sub_Sist_Veh">
+                <ScalarProperty Name="idSub_Sist_Veh" ColumnName="idSub_Sist_Veh" />
+                <ScalarProperty Name="desc_Sub_Sist_Veh" ColumnName="desc_Sub_Sist_Veh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Ubigeo">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Ubigeo">
+              <MappingFragment StoreEntitySet="Tb_Ubigeo">
+                <ScalarProperty Name="cod_ubigeo" ColumnName="cod_ubigeo" />
+                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
+                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
+                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Usuario">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Usuario">
+              <MappingFragment StoreEntitySet="Tb_Usuario">
+                <ScalarProperty Name="Login_Usuario" ColumnName="Login_Usuario" />
+                <ScalarProperty Name="Pass_usuario" ColumnName="Pass_usuario" />
+                <ScalarProperty Name="Niv_usuario" ColumnName="Niv_usuario" />
+                <ScalarProperty Name="Est_Usuario" ColumnName="Est_Usuario" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_registro" ColumnName="Usu_registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Vehiculo">
+            <EntityTypeMapping TypeName="MANTENIMIENTOModel.Tb_Vehiculo">
+              <MappingFragment StoreEntitySet="Tb_Vehiculo">
+                <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="Act_kilom_Veh" ColumnName="Act_kilom_Veh" />
+                <ScalarProperty Name="Act_Horom_Veh" ColumnName="Act_Horom_Veh" />
+                <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+                <ScalarProperty Name="Tipo_Unidad" ColumnName="Tipo_Unidad" />
+                <ScalarProperty Name="Fec_Ing_Veh" ColumnName="Fec_Ing_Veh" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Tipo_Trans" ColumnName="Tipo_Trans" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Foto_Veh" ColumnName="Foto_Veh" />
+                <ScalarProperty Name="Año_Modelo" ColumnName="Año_Modelo" />
+                <ScalarProperty Name="Modelo_Vehiculo" ColumnName="Modelo_Vehiculo" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_VehiculoFechas" FunctionName="MANTENIMIENTOModel.Store.usp_VehiculoFechas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MANTENIMIENTOModel.usp_VehiculoFechas_Result">
+                <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+                <ScalarProperty Name="Fec_Mant_Inic" ColumnName="Fec_Mant_Inic" />
+                <ScalarProperty Name="Fec_Mant_Fin" ColumnName="Fec_Mant_Fin" />
+                <ScalarProperty Name="tipo_mantenimiento" ColumnName="tipo_mantenimiento" />
+                <ScalarProperty Name="TipoMantenimiento" ColumnName="TipoMantenimiento" />
+                <ScalarProperty Name="Nom_mec" ColumnName="Nom_mec" />
+                <ScalarProperty Name="Ape_mec" ColumnName="Ape_mec" />
+                <ScalarProperty Name="idMecanico" ColumnName="idMecanico" />
+                <ScalarProperty Name="Tipo_Trans" ColumnName="Tipo_Trans" />
+                <ScalarProperty Name="TipoTransmision" ColumnName="TipoTransmision" />
+                <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+                <ScalarProperty Name="Tipo_Unidad" ColumnName="Tipo_Unidad" />
+                <ScalarProperty Name="TipoUnidad" ColumnName="TipoUnidad" />
+                <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
+                <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

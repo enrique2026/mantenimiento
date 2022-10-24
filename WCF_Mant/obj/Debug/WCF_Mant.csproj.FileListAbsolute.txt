@@ -1,0 +1,12 @@
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\bin\Debug\WCF_Mant.dll.config
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\bin\Debug\WCF_Mant.dll
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\bin\Debug\WCF_Mant.pdb
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\bin\Debug\EntityFramework.dll
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\bin\Debug\EntityFramework.SqlServer.dll
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\bin\Debug\EntityFramework.xml
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\bin\Debug\EntityFramework.SqlServer.xml
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.csproj.AssemblyReference.cache
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.csproj.CoreCompileInputs.cache
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.csproj.CopyComplete
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.dll
+D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.pdb

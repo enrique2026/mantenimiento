@@ -1,0 +1,174 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{025D1764-E313-437C-8247-497A56340193}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WCF_Mant</RootNamespace>
+    <AssemblyName>WCF_Mant</AssemblyName>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <XsdCodeGenEnabled>True</XsdCodeGenEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IService1.cs" />
+    <Compile Include="IServicioCliente.cs" />
+    <Compile Include="IServicioVehiculos.cs" />
+    <Compile Include="Mantenimiento.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mantenimiento.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mantenimiento.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service1.cs" />
+    <Compile Include="ServicioCliente.cs" />
+    <Compile Include="ServicioVehiculos.cs" />
+    <Compile Include="Tb_Act_Man.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Cliente.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_DetalleFactura.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Factura.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Mantenimiento.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Mant_Detalle.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Marca.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Mecanico.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Repuesto.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Sist_Veh.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Sub_Sist_Veh.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Ubigeo.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Usuario.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Vehiculo.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_VehiculoFechas_Result.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Mantenimiento.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Mantenimiento.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Mantenimiento.edmx.diagram">
+      <DependentUpon>Mantenimiento.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mantenimiento.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Mantenimiento.edmx</DependentUpon>
+      <LastGenOutput>Mantenimiento.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Mantenimiento.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Mantenimiento.edmx</DependentUpon>
+      <LastGenOutput>Mantenimiento.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio</VSToolsPath>
+    <WcfServiceModelTargetPath>$(VSToolsPath)\WCF</WcfServiceModelTargetPath>
+  </PropertyGroup>
+  <Import Project="$(WcfServiceModelTargetPath)\Microsoft.VisualStudio.ServiceModel.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>True</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
