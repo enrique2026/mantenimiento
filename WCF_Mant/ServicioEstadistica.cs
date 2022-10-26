@@ -10,8 +10,7 @@ namespace WCF_Mant
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "ServicioEstadistica" en el código y en el archivo de configuración a la vez.
     public class ServicioEstadistica : IServicioEstadistica
-    {
-        //Instancia
+    {        
         MANTENIMIENTO mant = new MANTENIMIENTO();
         public List<ClienteEstadistica> RankingClientesAño(Int16 año, Int16 top)
         {
