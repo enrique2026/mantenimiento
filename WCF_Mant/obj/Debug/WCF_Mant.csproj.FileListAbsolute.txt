@@ -10,3 +10,15 @@ D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.csproj.CoreCompil
 D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.csproj.CopyComplete
 D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.dll
 D:\Proy_Mant_DA2\WCF_Mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.pdb
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\bin\Debug\WCF_Mant.dll.config
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\bin\Debug\WCF_Mant.dll
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\bin\Debug\WCF_Mant.pdb
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\bin\Debug\EntityFramework.dll
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\bin\Debug\EntityFramework.SqlServer.dll
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\bin\Debug\EntityFramework.xml
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\bin\Debug\EntityFramework.SqlServer.xml
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.csproj.AssemblyReference.cache
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.csproj.CoreCompileInputs.cache
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.csproj.CopyComplete
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.dll
+F:\CURSOS-ISIL\2022-2\DA2\Parcial\mantenimiento\WCF_Mant\obj\Debug\WCF_Mant.pdb

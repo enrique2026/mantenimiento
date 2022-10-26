@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MANTENIMIENTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MANTENIMIENTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Tb_Act_Man">
           <Key>
             <PropertyRef Name="idAct_Man" />
@@ -344,6 +344,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="usp_RankingClieMantAños" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="año" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_RankingMantMecAños" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="año" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_RankingVehiculosMantAños" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="año" Type="int" Mode="In" />
+        </Function>
         <Function Name="usp_VehiculoFechas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idVehiculo" Type="varchar" Mode="In" />
           <Parameter Name="vFec_Inicio" Type="datetime" Mode="In" />
@@ -417,8 +426,7 @@
             <End Role="Tb_Vehiculo" EntitySet="Tb_Vehiculo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MANTENIMIENTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -859,6 +867,15 @@
             <Parameter Name="vFec_Inicio" Mode="In" Type="DateTime" />
             <Parameter Name="vFec_Fin" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="usp_RankingClieMantAños" ReturnType="Collection(MANTENIMIENTOModel.usp_RankingClieMantAños_Result)">
+            <Parameter Name="año" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_RankingMantMecAños" ReturnType="Collection(MANTENIMIENTOModel.usp_RankingMantMecAños_Result)">
+            <Parameter Name="año" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_RankingVehiculosMantAños" ReturnType="Collection(MANTENIMIENTOModel.usp_RankingVehiculosMantAños_Result)">
+            <Parameter Name="año" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="usp_VehiculoFechas_Result">
           <Property Type="String" Name="idVehiculo" Nullable="false" MaxLength="7" />
@@ -876,6 +893,18 @@
           <Property Type="String" Name="TipoUnidad" Nullable="true" MaxLength="6" />
           <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_RankingClieMantAños_Result">
+          <Property Type="String" Name="NOMBRES" Nullable="true" MaxLength="72" />
+          <Property Type="Int32" Name="TotalMant" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_RankingMantMecAños_Result">
+          <Property Type="String" Name="NOMBRES" Nullable="true" MaxLength="72" />
+          <Property Type="Int32" Name="TotalMant" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_RankingVehiculosMantAños_Result">
+          <Property Type="String" Name="PLACA" Nullable="false" MaxLength="7" />
+          <Property Type="Int32" Name="TotalMant" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1097,6 +1126,30 @@
                 <ScalarProperty Name="TipoUnidad" ColumnName="TipoUnidad" />
                 <ScalarProperty Name="Nom_cli" ColumnName="Nom_cli" />
                 <ScalarProperty Name="Ape_cli" ColumnName="Ape_cli" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_RankingClieMantAños" FunctionName="MANTENIMIENTOModel.Store.usp_RankingClieMantAños">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MANTENIMIENTOModel.usp_RankingClieMantAños_Result">
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="TotalMant" ColumnName="TotalMant" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_RankingMantMecAños" FunctionName="MANTENIMIENTOModel.Store.usp_RankingMantMecAños">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MANTENIMIENTOModel.usp_RankingMantMecAños_Result">
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="TotalMant" ColumnName="TotalMant" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_RankingVehiculosMantAños" FunctionName="MANTENIMIENTOModel.Store.usp_RankingVehiculosMantAños">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MANTENIMIENTOModel.usp_RankingVehiculosMantAños_Result">
+                <ScalarProperty Name="PLACA" ColumnName="PLACA" />
+                <ScalarProperty Name="TotalMant" ColumnName="TotalMant" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

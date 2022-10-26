@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="IService1.cs" />
     <Compile Include="IServicioCliente.cs" />
+    <Compile Include="IServicioEstadistica.cs" />
     <Compile Include="IServicioVehiculos.cs" />
     <Compile Include="Mantenimiento.Context.cs">
       <AutoGen>True</AutoGen>
@@ -75,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service1.cs" />
     <Compile Include="ServicioCliente.cs" />
+    <Compile Include="ServicioEstadistica.cs" />
     <Compile Include="ServicioVehiculos.cs" />
     <Compile Include="Tb_Act_Man.cs">
       <DependentUpon>Mantenimiento.tt</DependentUpon>
@@ -116,6 +118,15 @@
       <DependentUpon>Mantenimiento.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Vehiculo.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_RankingClieMantAños_Result.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_RankingMantMecAños_Result.cs">
+      <DependentUpon>Mantenimiento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_RankingVehiculosMantAños_Result.cs">
       <DependentUpon>Mantenimiento.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_VehiculoFechas_Result.cs">

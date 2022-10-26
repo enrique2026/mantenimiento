@@ -58,5 +58,32 @@ namespace WCF_Mant
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_VehiculoFechas_Result>("usp_VehiculoFechas", idVehiculoParameter, vFec_InicioParameter, vFec_FinParameter);
         }
+    
+        public virtual ObjectResult<usp_RankingClieMantAños_Result> usp_RankingClieMantAños(Nullable<int> año)
+        {
+            var añoParameter = año.HasValue ?
+                new ObjectParameter("año", año) :
+                new ObjectParameter("año", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_RankingClieMantAños_Result>("usp_RankingClieMantAños", añoParameter);
+        }
+    
+        public virtual ObjectResult<usp_RankingMantMecAños_Result> usp_RankingMantMecAños(Nullable<int> año)
+        {
+            var añoParameter = año.HasValue ?
+                new ObjectParameter("año", año) :
+                new ObjectParameter("año", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_RankingMantMecAños_Result>("usp_RankingMantMecAños", añoParameter);
+        }
+    
+        public virtual ObjectResult<usp_RankingVehiculosMantAños_Result> usp_RankingVehiculosMantAños(Nullable<int> año)
+        {
+            var añoParameter = año.HasValue ?
+                new ObjectParameter("año", año) :
+                new ObjectParameter("año", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_RankingVehiculosMantAños_Result>("usp_RankingVehiculosMantAños", añoParameter);
+        }
     }
 }

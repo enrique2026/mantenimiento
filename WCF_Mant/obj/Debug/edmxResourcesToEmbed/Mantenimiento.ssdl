@@ -339,6 +339,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="usp_RankingClieMantAños" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="año" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_RankingMantMecAños" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="año" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_RankingVehiculosMantAños" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="año" Type="int" Mode="In" />
+  </Function>
   <Function Name="usp_VehiculoFechas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idVehiculo" Type="varchar" Mode="In" />
     <Parameter Name="vFec_Inicio" Type="datetime" Mode="In" />

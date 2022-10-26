@@ -437,6 +437,15 @@
       <Parameter Name="vFec_Inicio" Mode="In" Type="DateTime" />
       <Parameter Name="vFec_Fin" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="usp_RankingClieMantAños" ReturnType="Collection(MANTENIMIENTOModel.usp_RankingClieMantAños_Result)">
+      <Parameter Name="año" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_RankingMantMecAños" ReturnType="Collection(MANTENIMIENTOModel.usp_RankingMantMecAños_Result)">
+      <Parameter Name="año" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_RankingVehiculosMantAños" ReturnType="Collection(MANTENIMIENTOModel.usp_RankingVehiculosMantAños_Result)">
+      <Parameter Name="año" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="usp_VehiculoFechas_Result">
     <Property Type="String" Name="idVehiculo" Nullable="false" MaxLength="7" />
@@ -454,5 +463,17 @@
     <Property Type="String" Name="TipoUnidad" Nullable="true" MaxLength="6" />
     <Property Type="String" Name="Nom_cli" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="Ape_cli" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="usp_RankingClieMantAños_Result">
+    <Property Type="String" Name="NOMBRES" Nullable="true" MaxLength="72" />
+    <Property Type="Int32" Name="TotalMant" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_RankingMantMecAños_Result">
+    <Property Type="String" Name="NOMBRES" Nullable="true" MaxLength="72" />
+    <Property Type="Int32" Name="TotalMant" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_RankingVehiculosMantAños_Result">
+    <Property Type="String" Name="PLACA" Nullable="false" MaxLength="7" />
+    <Property Type="Int32" Name="TotalMant" Nullable="true" />
   </ComplexType>
 </Schema>

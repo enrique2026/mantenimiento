@@ -218,5 +218,29 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_RankingClieMantAños" FunctionName="MANTENIMIENTOModel.Store.usp_RankingClieMantAños">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MANTENIMIENTOModel.usp_RankingClieMantAños_Result">
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="TotalMant" ColumnName="TotalMant" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_RankingMantMecAños" FunctionName="MANTENIMIENTOModel.Store.usp_RankingMantMecAños">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MANTENIMIENTOModel.usp_RankingMantMecAños_Result">
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="TotalMant" ColumnName="TotalMant" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_RankingVehiculosMantAños" FunctionName="MANTENIMIENTOModel.Store.usp_RankingVehiculosMantAños">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MANTENIMIENTOModel.usp_RankingVehiculosMantAños_Result">
+          <ScalarProperty Name="PLACA" ColumnName="PLACA" />
+          <ScalarProperty Name="TotalMant" ColumnName="TotalMant" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
